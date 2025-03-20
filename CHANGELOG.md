@@ -1,4 +1,13 @@
-# 0.1.0 (2025-03-20)
+## [0.1.1](https://github.com/luccasfzn/advanced-web-scraper/compare/v0.1.0...v0.1.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* **docs:** cria módulo trigger para resolver erro de importação na documentação ([f2d2e57](https://github.com/luccasfzn/advanced-web-scraper/commit/f2d2e5796b4943ca04439c0e5ba78a155b1c16ae))
+
+
+
+# [0.1.0](https://github.com/luccasfzn/advanced-web-scraper/compare/d60a244440fbe930dfa85a6813a3bca225b87f6b...v0.1.0) (2025-03-20)
 
 
 ### Bug Fixes
