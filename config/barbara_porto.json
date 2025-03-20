@@ -1,0 +1,52 @@
+{
+    "urls": [
+        "https://www.barbaraporto.com.br/colecoes/com-amor/anel-com-amor",
+        "https://www.barbaraporto.com.br/anel-g-bossa",
+        "https://www.barbaraporto.com.br/brinco-m-bossa"
+    ],
+    "scraper_settings": {
+        "max_workers": 3,
+        "min_delay": 2.0,
+        "max_delay": 5.0,
+        "timeout": 30,
+        "retries": 3,
+        "use_selenium": true,
+        "headless": true,
+        "selectors": {
+            "title": {
+                "selector": "h1.product-name",
+                "type": "css",
+                "wait": true
+            },
+            "price": {
+                "selector": ".preco-promocional, #variacaoPreco, .PrecoPrincipal",
+                "type": "css"
+            },
+            "description": {
+                "selector": ".board_htm",
+                "type": "css"
+            },
+            "image": {
+                "selector": ".swiper-slide img, .product-img-box img",
+                "type": "css",
+                "attribute": "src"
+            },
+            "category": {
+                "selector": ".breadcrumb li",
+                "type": "css",
+                "multiple": true
+            }
+        }
+    },
+    "export_settings": {
+        "formats": ["csv", "json"],
+        "output_dir": "data",
+        "filename_prefix": "barbaraporto_produtos"
+    },
+    "categories": {
+        "Anéis": ["anel"],
+        "Brincos": ["brinco", "piercing"],
+        "Colares": ["colar", "corrente", "aro"],
+        "Braceletes": ["pulseira", "bracelete"]
+    }
+}
