@@ -21,6 +21,6 @@ module.exports = {
     'type-case': [2, 'always', 'lowercase'],
     'subject-case': [0], // Desabilitado para permitir flexibilidade
     'subject-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 72]
+    'header-max-length': [2, 'always', 100]
   }
 };
