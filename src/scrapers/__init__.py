@@ -1,5 +1,8 @@
 """
-Implementações de scrapers para diferentes cenários de extração.
+Módulo de scrapers para diferentes sites e APIs.
+
+Este módulo contém implementações específicas para extração de dados
+de várias fontes, incluindo sites e APIs públicas.
 """
 
 from src.scrapers.base_scraper import BaseScraper
