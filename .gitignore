@@ -1,0 +1,49 @@
+# Arquivos e diretórios específicos do projeto
+data/
+logs/
+screenshots/
+.env
+
+# Arquivos de configuração que possam conter dados sensíveis
+# config/*.json
+# Descomente a linha acima se quiser ignorar todas as configurações
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+.venv/
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Selenium
+geckodriver.log
+chromedriver.log
+*.log
