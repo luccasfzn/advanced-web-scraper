@@ -62,3 +62,36 @@ class ScraperLogger:
     def get_logger(self):
         """Retorna o objeto logger configurado."""
         return self.logger
+
+# Instância de logger global
+_default_logger = None
+
+def setup_logger(name="webscraper", log_dir="logs", console_level=logging.INFO, file_level=logging.DEBUG):
+    """
+    Configura e retorna uma instância de logger.
+    
+    Args:
+        name: Nome do logger
+        log_dir: Diretório para armazenar os logs
+        console_level: Nível de log para o console
+        file_level: Nível de log para o arquivo
+        
+    Returns:
+        Objeto logger configurado
+    """
+    global _default_logger
+    _default_logger = ScraperLogger(name, log_dir, console_level, file_level)
+    return _default_logger.get_logger()
+
+def get_logger():
+    """
+    Retorna o logger configurado. Se nenhum logger foi configurado, 
+    cria um novo com configurações padrão.
+    
+    Returns:
+        Objeto logger configurado
+    """
+    global _default_logger
+    if _default_logger is None:
+        return setup_logger()
+    return _default_logger.get_logger()
