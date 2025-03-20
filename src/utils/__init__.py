@@ -1,5 +1,8 @@
 """
-Utilitários e helpers para o web scraper.
+Módulo de utilidades para o web scraper.
+
+Este módulo contém funções e classes auxiliares utilizadas
+pelos módulos de scraping, exportação e outros componentes do sistema.
 """
 
 from src.utils.logger import setup_logger, get_logger

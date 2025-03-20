@@ -14,6 +14,11 @@ on:
     branches: [ main, master ]
   workflow_dispatch:  # Permite execução manual
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   commit-lint:
     runs-on: ubuntu-latest
@@ -105,11 +110,16 @@ jobs:
           if [ ! -f src/__init__.py ]; then touch src/__init__.py; fi
           pdoc --html --output-dir docs src
           
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        
       - name: Deploy documentation
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          force_orphan: true
           
   changelog:
     runs-on: ubuntu-latest
@@ -118,6 +128,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Generate changelog
         id: changelog
@@ -129,6 +140,8 @@ jobs:
           tag-prefix: 'v'
           output-file: 'CHANGELOG.md'
           release-count: 0
+          skip-version-file: 'true'
+          skip-on-empty: 'true'
           
   notify:
     runs-on: ubuntu-latest
@@ -143,7 +156,7 @@ jobs:
         id: get_commit_message
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "::set-output name=message::$COMMIT_MSG"
           
       - name: Determine commit type
         id: commit_type
@@ -157,24 +170,7 @@ jobs:
           elif [[ $MSG == docs* ]]; then
             TYPE="documentation"
           fi
-          echo "type=$TYPE" >> $GITHUB_OUTPUT
-          
-      - name: Send notification
-        if: false  # Desativado até que os segredos estejam configurados
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{secrets.MAIL_SERVER}}
-          server_port: ${{secrets.MAIL_PORT}}
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: "[${{ steps.commit_type.outputs.type }}] GitHub Actions - ${{ github.workflow }} workflow completed"
-          body: |
-            O workflow ${{ github.workflow }} foi concluído em ${{ github.repository }}.
-            
-            Tipo de commit: ${{ steps.commit_type.outputs.type }}
-            Mensagem: ${{ steps.get_commit_message.outputs.message }}
-            Status: ${{ job.status }}
-            
-            Detalhes: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: ${{secrets.NOTIFICATION_EMAIL}}
-          from: GitHub Actions
+          echo "::set-output name=type::$TYPE"
+      
+      - name: Create success status
+        run: echo "Workflow completed successfully"
