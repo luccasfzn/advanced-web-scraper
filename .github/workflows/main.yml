@@ -190,7 +190,7 @@ jobs:
         id: get_commit_message
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "::set-output name=message::$COMMIT_MSG"
+          echo "message=$COMMIT_MSG" >> $GITHUB_OUTPUT
           
       - name: Determine commit type
         id: commit_type
@@ -204,7 +204,7 @@ jobs:
           elif [[ $MSG == docs* ]]; then
             TYPE="documentation"
           fi
-          echo "::set-output name=type::$TYPE"
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
       
       - name: Create success status
         run: echo "Workflow completed successfully"
