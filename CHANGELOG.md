@@ -1,3 +1,14 @@
+## [0.1.2](https://github.com/luccasfzn/advanced-web-scraper/compare/v0.1.1...v0.1.2) (2025-03-22)
+
+
+### Bug Fixes
+
+* atualiza sintaxe de workflow para usar GITHUB_OUTPUT ([afde73b](https://github.com/luccasfzn/advanced-web-scraper/commit/afde73b6b77066aaa85a993d9c03a9b1e2d8b3ee))
+* **ci:** corrige problema de contexto inválido no workflow ([30e3e81](https://github.com/luccasfzn/advanced-web-scraper/commit/30e3e81cd6234ce6efa3cfe6db2c1f4cd9f089ad))
+* **docs:** adiciona funções setup_logger e get_logger no módulo logger ([9da5e33](https://github.com/luccasfzn/advanced-web-scraper/commit/9da5e33ad2d2fbe4642042b61f10883f4ec74f6f))
+
+
+
 ## [0.1.1](https://github.com/luccasfzn/advanced-web-scraper/compare/v0.1.0...v0.1.1) (2025-03-20)
 
 
